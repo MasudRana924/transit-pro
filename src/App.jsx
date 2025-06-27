@@ -17,6 +17,7 @@ const VerifyOtpPage = lazy(() => import("./pages/user/auth/VerifyOtpPage"));
 const UserLayout = lazy(() => import("./pages/layout/UserLayout"));
 const Account = lazy(() => import("./pages/user/profile/Account"));
 const Booking = lazy(() => import("./pages/user/booking/Booking"));
+const NotFound = lazy(() => import("./pages/not-found/NotFound")); // Add this line
 
 function App() {
   return (
@@ -50,6 +51,8 @@ function App() {
                   </PrivateRoute>
                 }
               />
+              {/* Add this catch-all route at the end */}
+              <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
         </main>
