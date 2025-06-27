@@ -31,7 +31,7 @@ export const fetchBusDetails = createAsyncThunk(
   async (busId, { rejectWithValue }) => {
     try {
       const response = await publicGet(`/api/buses/${busId}`);
-      return { busId, seats: response.seats };
+      return response;
     } catch (error) {
       return rejectWithValue(error.response.data);
     }
@@ -75,6 +75,10 @@ const busesSlice = createSlice({
     clearError: (state) => {
       state.errorr = null;
     },
+    clearBusFetched:(state)=>{
+      state.isBusFetched=false;
+      state.buses=[]
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -132,5 +136,5 @@ const busesSlice = createSlice({
 });
 
 // Exports
-export const { clearSelectedBus, clearError } = busesSlice.actions;
+export const { clearSelectedBus, clearError,clearBusFetched } = busesSlice.actions;
 export default busesSlice.reducer;

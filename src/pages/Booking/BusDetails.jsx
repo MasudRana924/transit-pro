@@ -18,7 +18,7 @@ const BusDetails = () => {
       {bus && (
         <>
           <h2 className="text-2xl font-bold mb-4">{bus.busName}</h2>
-          <BusSeatLayout busId={id} seats={bus.seats} />
+          <BusSeatLayout busId={id} busDetails={bus} seats={bus.seats} />
         </>
       )}
     </div>
