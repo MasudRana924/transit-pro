@@ -14,7 +14,7 @@ import {
   DollarSign
 } from "lucide-react";
 import { useEffect } from "react";
-import { message } from "antd";
+
 import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import BookingConfirmation from '../pages/Booking/BookingConfirmation'; // Make sure to import BookingConfirmation
@@ -58,7 +58,7 @@ const BusSeatLayout = ({ busId, seats, busDetails }) => {
 
   useEffect(() => {
     if (isBookingtTrue) {
-      message.success('Your ticket is booked successfully!')
+      // message.success('Your ticket is booked successfully!')
       // navigate('/');
       // dispatch(clearCurrentBooking());
       // dispatch(clearBusFetched());
