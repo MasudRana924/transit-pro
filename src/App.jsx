@@ -5,6 +5,7 @@ import Header from './components/shared/Header';
 import Footer from './components/shared/Footer';
 import Preloader from './components/laoder/Preloader';
 
+
 // Lazy-loaded components
 const Home = lazy(() => import("./pages/Home/Home"));
 const Login = lazy(() => import("./pages/user/auth/Login"));
@@ -17,8 +18,8 @@ const VerifyOtpPage = lazy(() => import("./pages/user/auth/VerifyOtpPage"));
 const UserLayout = lazy(() => import("./pages/layout/UserLayout"));
 const Account = lazy(() => import("./pages/user/profile/Account"));
 const Booking = lazy(() => import("./pages/user/booking/Booking"));
-const NotFound = lazy(() => import("./pages/not-found/NotFound")); // Add this line
-
+const NotFound = lazy(() => import("./pages/not-found/NotFound"));
+const Services = lazy(() => import("./pages/services/Services"));
 function App() {
   return (
     <Router>
@@ -37,6 +38,7 @@ function App() {
               <Route path="/verify" element={<VerifyOtpPage />} />
               <Route path="/search" element={<SearchBuses />} />
               <Route path="/buses" element={<BusCard />} />
+              <Route path="/services" element={<Services />} />
               <Route path="/bus/:id" element={<BusDetails />} />
               <Route path="/user" element={<PrivateRoute><UserLayout /></PrivateRoute>}>
                 <Route path="account" element={<Account />} />
