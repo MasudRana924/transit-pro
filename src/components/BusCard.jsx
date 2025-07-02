@@ -91,10 +91,10 @@ const BusCard = () => {
 
     // Create price ranges based on actual bus prices (if available)
     const prices = [
-      'Under $50',
-      '$50 - $100',
-      '$100 - $200',
-      'Above $200'
+      'Under 500',
+      '500 - 1000',
+      '1000 - 2000',
+      'Above 2000'
     ];
 
     return { 
@@ -148,10 +148,10 @@ const BusCard = () => {
       if (filters.price && bus.price) {
         const priceNum = parseFloat(bus.price.replace(/[^0-9.]/g, ''));
         
-        if (filters.price === 'Under $50' && priceNum >= 50) return false;
-        if (filters.price === '$50 - $100' && (priceNum < 50 || priceNum > 100)) return false;
-        if (filters.price === '$100 - $200' && (priceNum < 100 || priceNum > 200)) return false;
-        if (filters.price === 'Above $200' && priceNum <= 200) return false;
+        if (filters.price === 'Under 500' && priceNum >= 500) return false;
+        if (filters.price === '500 - 1000' && (priceNum < 500 || priceNum > 1000)) return false;
+        if (filters.price === '1000 - 2000' && (priceNum < 1000 || priceNum > 2000)) return false;
+        if (filters.price === 'Above 2000' && priceNum <= 2000) return false;
       }
 
       return true;

@@ -13,14 +13,9 @@ import {
   Calendar,
   DollarSign
 } from "lucide-react";
-import { useEffect } from "react";
-
-import { useNavigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import BookingConfirmation from '../pages/Booking/BookingConfirmation'; // Make sure to import BookingConfirmation
-
 const BusSeatLayout = ({ busId, seats, busDetails }) => {
-  const navigate = useNavigate();
   const [selectedSeats, setSelectedSeats] = useState([]);
   const { token } = useSelector((state) => state.user);
   const { isBookingtTrue } = useSelector((state) => state.bookings);
@@ -56,14 +51,6 @@ const BusSeatLayout = ({ busId, seats, busDetails }) => {
     return true;
   };
 
-  useEffect(() => {
-    if (isBookingtTrue) {
-      // message.success('Your ticket is booked successfully!')
-      // navigate('/');
-      // dispatch(clearCurrentBooking());
-      // dispatch(clearBusFetched());
-    }
-  }, [isBookingtTrue, navigate, dispatch]);
 
   // Create seat layout: 2-4-2 arrangement with 10 rows + driver seat
   const createSeatLayout = () => {

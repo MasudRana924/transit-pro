@@ -1,5 +1,5 @@
 // src/api/index.js
-export const api = "http://localhost:5000"; // or your backend URL
+export const api = "https://tour-back-office.onrender.com"; // or your backend URL
 import axios from "axios";
 const config = {
   headers: {
