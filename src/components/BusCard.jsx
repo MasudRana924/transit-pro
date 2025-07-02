@@ -1,19 +1,23 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useState, useMemo } from "react";
-import { Clock, MapPin, Wifi, Coffee, Snowflake, Users, ArrowRight, Filter, ChevronDown, X } from "lucide-react";
+import { Clock, MapPin, Wifi, Coffee, Snowflake, Users, ArrowRight, Filter, ChevronDown, X,Search } from "lucide-react";
 import BusNoResults from "./no-result/BusNoResults";
+import { clearBusFetched } from "../redux/reducers/bus/busesSlice";
 
 const BusCard = () => {
+  const dispatch=useDispatch()
   const { buses } = useSelector((state) => state.buses);
   const navigate = useNavigate();
-
-  // Filter states
+const handleModifySearch = () => {
+  dispatch(clearBusFetched())
+    navigate('/');
+  };
   const [filters, setFilters] = useState({
     busType: '',
     departure: '',
     price: '',
-    acType: '' // New filter for AC/Non-AC
+    acType: '' 
   });
 
   // Dropdown states
@@ -169,10 +173,21 @@ const BusCard = () => {
   return (
     <div className="max-w-6xl mx-auto p-4 md:mt-24">
       {/* Header */}
-      <div className="mb-6">
-        <h2 className="text-2xl md:text-3xl font-bold text-green-600 mb-2">Bus Results</h2>
-        <p className="text-red-500">{filteredBuses.length} bus{filteredBuses.length > 1 ? 'es' : ''} found</p>
+      <div className="mb-6 flex justify-between items-start">
+        <div>
+          <h2 className="text-2xl md:text-3xl font-bold text-green-600 mb-2">Bus Results</h2>
+          <p className="text-red-500">{filteredBuses.length} bus{filteredBuses.length > 1 ? 'es' : ''} found</p>
+        </div>
+        {/* Add the Modify Search button here */}
+        <button
+          onClick={handleModifySearch}
+          className="flex items-center gap-2 bg-white border border-blue-600 text-blue-600 hover:bg-blue-50 font-medium py-2 px-4 rounded-lg transition-colors duration-200"
+        >
+          <Search className="w-4 h-4" />
+          <span>Modify Search</span>
+        </button>
       </div>
+
 
       {/* Filter Section */}
       <div className="bg-white rounded-lg shadow-md p-4 mb-6 border">
